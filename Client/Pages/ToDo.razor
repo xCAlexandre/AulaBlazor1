@@ -1,0 +1,47 @@
+@page "/todo"
+
+<h3>Lista de a Fazeres</h3>
+<h3>À fazer (@todos.Count(todo => !todo.feito))</h3>
+
+@*
+<input placeholder ="Algo à fazer" @bind = "newTodo"/>
+<Button Color="Color.Secondary" Clicked = "AddTodo" >Adicionar</Button>
+*@
+
+<Addons>
+    <Addon AddonType="AddonType.Body">
+        <TextEdit Placeholder="Algo a fazer" @bind-Text= "newTodo"/>
+    </Addon>
+    <Addon AddonType="AddonType.End">
+        <Button Color="Color.Secondary" Clicked = "AddTodo">Button</Button>
+    </Addon>
+</Addons>
+
+<p></p>
+
+<ol>
+    @foreach (var todo in todos)
+    {
+        <li>
+            <input type="checkbox" @bind="todo.feito"/>
+            <input @bind="todo.titulo" />
+            <input  @bind = "todo.data"/>
+        </li>
+    }
+</ol>
+
+@code{
+    private IList<AFazer> todos = new List<AFazer>();
+    private string newTodo;
+    public DateTime newData;
+
+    
+    private void AddTodo(){
+        if(!string.IsNullOrWhiteSpace(newTodo)){
+            todos.Add(new AFazer{ titulo = newTodo});
+            newTodo = string.Empty;
+        }
+    }
+
+    
+}
