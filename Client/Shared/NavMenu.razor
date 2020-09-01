@@ -1,10 +1,10 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="/">Odder Otter</a>
-    <!-- The collapse button will only show on small screens -->
-    <button class="navbar-toggler-icon d-md-none" @onclick="ToggleNavMenu" />
-</div>
+﻿<nav class="navbar navbar-dark bg-dark">
+  <center><a class="navbar-brand"  href="/">
+    Agenda
+  </a></center>
+</nav>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+<div class="p-3 mb-2 bg-dark text-white" @onclick="ToggleNavMenu" >
     <ul class="nav flex-column">
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">

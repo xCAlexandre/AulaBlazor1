@@ -1,7 +1,7 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'serif', Helvetica, Arial, sans-serif;
 }
 
 a, .btn-link {
@@ -10,8 +10,8 @@ a, .btn-link {
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: #000000;
+    border-color: #000000;
 }
 
 app {
@@ -31,8 +31,8 @@ app {
 }
 
     .main .top-row {
-        background-color: #f7f7f7;
-        border-bottom: 1px solid #d6d5d5;
+        background-color: #888787c5;
+        border-bottom: 1px solid #888787c5;
         justify-content: flex-end;
     }
 
@@ -47,7 +47,7 @@ app {
 }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    background-image: linear-gradient(180deg, rgb(0, 0, 0) 0%, #363636 70%);
 }
 
     .sidebar .top-row {
@@ -79,7 +79,7 @@ app {
         }
 
         .sidebar .nav-item a {
-            color: #d7d7d7;
+            color: #fff8f8;
             border-radius: 4px;
             height: 3rem;
             display: flex;
@@ -88,12 +88,12 @@ app {
         }
 
             .sidebar .nav-item a.active {
-                background-color: rgba(255,255,255,0.25);
+                background-color: rgba(0, 0, 0, 0.164);
                 color: white;
             }
 
             .sidebar .nav-item a:hover {
-                background-color: rgba(255,255,255,0.1);
+                background-color: rgba(0, 0, 0, 0.164);
                 color: white;
             }
 
@@ -102,7 +102,7 @@ app {
 }
 
 .navbar-toggler {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.438);
 }
 
 .valid.modified:not([type=checkbox]) {

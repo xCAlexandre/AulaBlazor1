@@ -1,47 +1,96 @@
 @page "/todo"
 
-<h3>Lista de a Fazeres</h3>
-<h3>À fazer (@todos.Count(todo => !todo.feito))</h3>
-
-@*
-<input placeholder ="Algo à fazer" @bind = "newTodo"/>
-<Button Color="Color.Secondary" Clicked = "AddTodo" >Adicionar</Button>
-*@
+<center><h2 style="font-family: serif">Lista de a fazeres</h2></center>
 
 <Addons>
     <Addon AddonType="AddonType.Body">
         <TextEdit Placeholder="Algo a fazer" @bind-Text= "newTodo"/>
     </Addon>
     <Addon AddonType="AddonType.End">
-        <Button Color="Color.Secondary" Clicked = "AddTodo">Button</Button>
+        <Button Color="Color.Secondary" Clicked = "AddTodo">Adicionar</Button>
     </Addon>
 </Addons>
 
 <p></p>
+<h3 style="font-family: serif">Feito (@todos.Count(todo => !todo.feito))</h3>
+<p></p>
 
-<ol>
+@*<input type="checkbox" @bind="todo.feito"/>
+            <input @bind="todo.titulo" />
+            <input  @bind = "todo.data"/>*@
+@*
+<ul class="list-group list-group-flush">
     @foreach (var todo in todos)
     {
-        <li>
+        <h1></h1>
+        
+        <li class="list-group-item">
+            <h5 style="font-family: Arial, Helvetica, sans-serif;">
             <input type="checkbox" @bind="todo.feito"/>
             <input @bind="todo.titulo" />
-            <input  @bind = "todo.data"/>
+            </h5>
         </li>
+        <h1></h1>
+          
     }
-</ol>
+</ul> 
+*@
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Feito</th>
+      <th scope="col">Tarefa</th>
+      <th scope="col">Data</th>
+      <th scope="col">Situação</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+     @foreach ( var todo in todos)
+    {
+    <tr>
+      
+      <th scope="row">@todo.posicao</th>
+      <td><input type="checkbox" @bind="todo.feito"/></td>
+      <td><input @bind="todo.titulo" /></td>
+      <td><input  @bind="todo.data"/></td>
+      <td><h5>@check(todo.feito)</h5></td>
+    </tr>
+    }
+    
+  </tbody>
+</table>
+
+
+
+
+
+
 
 @code{
-    private IList<AFazer> todos = new List<AFazer>();
+    public IList<AFazer> todos = new List<AFazer>();
     private string newTodo;
-    public DateTime newData;
 
-    
-    private void AddTodo(){
-        if(!string.IsNullOrWhiteSpace(newTodo)){
-            todos.Add(new AFazer{ titulo = newTodo});
-            newTodo = string.Empty;
+    public int count = 1;
+
+    private string check(bool info){
+        if(info == true){
+          return "Concluído";
         }
+        return "Incompleto";
+
     }
 
-    
+    private void AddTodo(){
+        if(!string.IsNullOrWhiteSpace(newTodo)){
+            todos.Add(new AFazer{ titulo = newTodo , posicao = count, data = NewData()});
+            newTodo = string.Empty;
+            count = count + 1;
+        }
+    }
+    private DateTime NewData(){
+        return DateTime.Now;
+    }
 }
